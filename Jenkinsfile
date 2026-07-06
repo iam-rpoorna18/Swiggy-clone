@@ -16,7 +16,8 @@ pipeline{
             steps {
                 sh '''
                   pwd
-                  ls -la
+                  ls -ltr
+                  find .
                 '''
             }
       }
