@@ -20,11 +20,11 @@ pipeline{
                 '''
             }
       }
-      stage('Checkout from git'){
-          steps{
-              git branch: 'main' ,credentialsId: 'github-token', url: 'https://github.com/iam-rpoorna18/Swiggy-clone.git'
-           }
-      }
+      //stage('Checkout from git'){
+      //    steps{
+      //        git branch: 'main' ,credentialsId: 'github-token', url: 'https://github.com/iam-rpoorna18/Swiggy-clone.git'
+       //    }
+      //}
       stage('Install Dependecy'){
           steps{
               sh "npm install"
