@@ -22,7 +22,7 @@ pipeline{
       }
       stage('Checkout from git'){
           steps{
-              git branch: 'main' ,credentialsId: 'github-token', url: 'https://github.com/iam-rpoorna18/cicd-kubernetes-myapp.git'
+              git branch: 'main' ,credentialsId: 'github-token', url: 'https://github.com/iam-rpoorna18/Swiggy-clone.git'
            }
       }
       stage('Install Dependecy'){
