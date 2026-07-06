@@ -6,12 +6,12 @@ pipeline{
   environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
-  stages{
-      stage('Clean workspace'){
-          steps{
-              cleanWs()
-          }
-      }
+  //stages{
+  //    stage('Clean workspace'){
+   //       steps{
+    //          cleanWs()
+    //      }
+    //  }
       stage('Debug') {
             steps {
                 sh '''
