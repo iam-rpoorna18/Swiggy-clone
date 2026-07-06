@@ -6,7 +6,7 @@ pipeline{
   environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
-  //stages{
+  stages{
   //    stage('Clean workspace'){
    //       steps{
     //          cleanWs()
