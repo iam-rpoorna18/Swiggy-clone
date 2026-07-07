@@ -36,6 +36,15 @@ pipeline{
               sh "trivy fs . > trivy-log.txt"
            }
       }
+      stage('Docker Build and Push'){
+          steps{
+             withDockerRegistry(credentialsId: 'dockerhub-id') {
+                sh "docker build -t swiggy-clone:${IMAGE_TAG} . "
+                sh "docker tag swiggy-clone pkumarr/swiggey-clone:swiggy-clone:${IMAGE_TAG}"
+                sh "docker push pkumarr/swiggey-clone:swiggy-clone:${IMAGE_TAG}"
+              }
+           }
+      }    
       
   }
 
