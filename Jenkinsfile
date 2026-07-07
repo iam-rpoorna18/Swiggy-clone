@@ -41,7 +41,7 @@ pipeline{
              withDockerRegistry(url:'https://registry-1.docker.io', credentialsId: 'dockerhub-id') {
                 sh "docker build -t swiggy-clone:${IMAGE_TAG} . "
                 sh "docker tag swiggy-clone pkumarr/swiggey-clone:${IMAGE_TAG}"
-                sh "docker push pkumarr/swiggey-clone:swiggy-clone:${IMAGE_TAG}"
+                sh "docker push pkumarr/swiggey-clone:${IMAGE_TAG}"
               }
            }
       }    
