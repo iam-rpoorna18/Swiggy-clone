@@ -1,23 +1,21 @@
-# Build stage
+# ---------- Build Stage ----------
 FROM node:16 AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
 RUN npm run build
 
-# Runtime stage
-FROM node:16-slim
+# ---------- Production Stage ----------
+FROM nginx:alpine
 
-WORKDIR /app
+COPY --from=builder /app/build /usr/share/nginx/html
 
-COPY --from=builder /app .
+EXPOSE 80
 
-EXPOSE 3000
-
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]
