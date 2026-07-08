@@ -56,8 +56,16 @@ pipeline{
                 script{
                    sh 'kubectl apply -f Kubernetes/deployment.yml'
                    sh 'kubectl set image deployment/swiggy-app swiggy-app=pkumarr/swiggy-clone:${IMAGE_TAG}'
-                   sh 'kubectl applly -f Kubernetes/service.yml'
+                   sh 'kubectl apply -f Kubernetes/service.yml'
+                   sh 
                 }
+            }
+        }
+        stage('Verify') {
+            steps {
+                sh 'kubectl get pods'
+                sh 'kubectl get svc'
+                sh 'kubectl get ingress'
             }
         }
       
