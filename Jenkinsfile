@@ -57,7 +57,6 @@ pipeline{
                    sh 'kubectl apply -f Kubernetes/deployment.yml'
                    sh 'kubectl set image deployment/swiggy-app swiggy-app=pkumarr/swiggy-clone:${IMAGE_TAG}'
                    sh 'kubectl apply -f Kubernetes/service.yml'
-                   sh 
                 }
             }
         }
