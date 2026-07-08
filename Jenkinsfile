@@ -53,11 +53,11 @@ pipeline{
       }
       stage('Deploy to k8s'){
             steps{
-                script{
+                //script{           // this will work also Use script when you need normal Groovy logic. Your Jenkinsfile already uses Groovy; script just unlocks normal Groovy code inside declarative stages.
                    sh 'kubectl apply -f Kubernetes/deployment.yml'
                    sh 'kubectl set image deployment/swiggy-app swiggy-app=pkumarr/swiggy-clone:${IMAGE_TAG}'
                    sh 'kubectl apply -f Kubernetes/service.yml'
-                }
+               // }
             }
         }
         stage('Verify') {
