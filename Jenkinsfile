@@ -45,7 +45,20 @@ pipeline{
                 sh "docker push pkumarr/swiggy-clone:${IMAGE_TAG}"
               }
            }
-      }    
+      }
+      stage('Trivy image Scan'){
+          steps{
+              sh "trivy image pkumarr/swiggy-clone:${IMAGE_TAG}  > trivy-image-log.txt"
+           }
+      }
+      stage('Deploy to k8s'){
+            steps{
+                script{
+                   sh 'kubectl apply -f Kubernetes/deploymentservice.yaml'
+                   sh 'kubectl applly -f service.yml'
+                }
+            }
+        }
       
   }
 
