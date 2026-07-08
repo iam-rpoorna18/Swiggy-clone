@@ -38,7 +38,7 @@ pipeline{
       }
       stage('Docker Build and Push'){
           steps{
-             withDockerRegistry(url:'https://registry-1.docker.io', credentialsId: 'dockerhub-id') {
+             withDockerRegistry(url:'https://index.docker.io/v1/', credentialsId: 'dockerhub-id') {
                 sh "docker info | grep Username || true"
                 sh "docker build -t swiggy-clone:${IMAGE_TAG} . "
                 sh "docker tag swiggy-clone:${IMAGE_TAG} pkumarr/swiggy-clone:${IMAGE_TAG}"
