@@ -20,4 +20,4 @@ spec:
         image: pkumarr/swiggy-clone:1
         imagePullPolicy: "Always"
         ports:
-        - containerPort: 3000
+        - containerPort: 80
